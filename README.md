@@ -1,5 +1,5 @@
 ### KudoBot
-##How to Use
+## How to Use
 A simple Windows forms app build with the pre-release of WebView2 for .NET (https://docs.microsoft.com/en-us/microsoft-edge/webview2/gettingstarted/winforms)
 
 
