@@ -29,13 +29,16 @@ namespace KudoBot
         private async void button1_Click(object sender, EventArgs e)
         {
             //Navigate to strava
-            webView.CoreWebView2.Navigate("https://www.strava.com/dashboard/following/600");
+            webView.CoreWebView2.Navigate("https://www.strava.com/dashboard");
             await PutTaskDelay(5);
-            progressBar1.Maximum = (Convert.ToInt32(textBox2.Text)) * 100;
+            progressBar1.Maximum = (Convert.ToInt32(textBox2.Text)) * 10;
             //Give Kudos up until number that the user specified
             for (int i = 0;i<(Convert.ToInt32(textBox2.Text));i++)
             {
-                var functionString = string.Format($@"document.getElementsByClassName('btn btn-icon btn-icon-only btn-kudo btn-xs js-add-kudo')[0].click();");
+                webView.Focus();
+                var functionString = string.Format($@"document.getElementsByClassName('btn btn-icon btn-icon-only btn-kudo btn-xs js-add-kudo')[0].focus();");
+                await webView.ExecuteScriptAsync(functionString);
+                functionString = string.Format($@"document.getElementsByClassName('btn btn-icon btn-icon-only btn-kudo btn-xs js-add-kudo')[0].click();");
                 await webView.ExecuteScriptAsync(functionString);
                 await PutTaskDelay(1);
                 textBox1.Text = (Convert.ToInt32(textBox1.Text.ToString()) + 1).ToString();
