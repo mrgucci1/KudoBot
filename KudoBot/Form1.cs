@@ -30,17 +30,17 @@ namespace KudoBot
         {
             //Navigate to strava
             webView.CoreWebView2.Navigate("https://www.strava.com/dashboard");
-            await PutTaskDelay(5);
+            await PutTaskDelay(3);
             progressBar1.Maximum = (Convert.ToInt32(textBox2.Text)) * 10;
             //Give Kudos up until number that the user specified
             for (int i = 0;i<(Convert.ToInt32(textBox2.Text));i++)
             {
-                webView.Focus();
-                var functionString = string.Format($@"document.getElementsByClassName('btn btn-icon btn-icon-only btn-kudo btn-xs js-add-kudo')[0].focus();");
-                await webView.ExecuteScriptAsync(functionString);
-                functionString = string.Format($@"document.getElementsByClassName('btn btn-icon btn-icon-only btn-kudo btn-xs js-add-kudo')[0].click();");
-                await webView.ExecuteScriptAsync(functionString);
+                //Focus on Kudo Button
+                await evaluateScript($@"document.getElementsByClassName('btn btn-icon btn-icon-only btn-kudo btn-xs js-add-kudo')[0].focus();");
+                //Click Kudo Button
+                await evaluateScript($@"document.getElementsByClassName('btn btn-icon btn-icon-only btn-kudo btn-xs js-add-kudo')[0].click();");
                 await PutTaskDelay(1);
+                //Update Kudo Given textbox
                 textBox1.Text = (Convert.ToInt32(textBox1.Text.ToString()) + 1).ToString();
                 //Every 10 Kudos, press space to go to botton of page
                 if(i%10==0)
@@ -62,6 +62,10 @@ namespace KudoBot
                 }
                 progressBar1.PerformStep();
             }  
+        }
+        public async Task evaluateScript(string functionString)
+        {
+            await webView.ExecuteScriptAsync(functionString);
         }
         public async Task PutTaskDelay(int delay)
         {
