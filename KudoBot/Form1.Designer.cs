@@ -31,7 +31,6 @@ namespace KudoBot
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.webView = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,19 +40,10 @@ namespace KudoBot
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.webView = new Microsoft.Web.WebView2.WinForms.WebView2();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.webView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // webView
-            // 
-            this.webView.CreationProperties = null;
-            this.webView.Location = new System.Drawing.Point(12, 264);
-            this.webView.Name = "webView";
-            this.webView.Size = new System.Drawing.Size(530, 643);
-            this.webView.Source = new System.Uri("https://www.strava.com/", System.UriKind.Absolute);
-            this.webView.TabIndex = 0;
-            this.webView.Text = "webView21";
-            this.webView.ZoomFactor = 1D;
             // 
             // button1
             // 
@@ -138,12 +128,24 @@ namespace KudoBot
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // webView
+            // 
+            this.webView.CreationProperties = null;
+            this.webView.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView.Location = new System.Drawing.Point(12, 276);
+            this.webView.Name = "webView";
+            this.webView.Size = new System.Drawing.Size(1641, 635);
+            this.webView.Source = new System.Uri("https://www.strava.com/dashboard", System.UriKind.Absolute);
+            this.webView.TabIndex = 9;
+            this.webView.ZoomFactor = 1D;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(147)))), ((int)(((byte)(5)))));
-            this.ClientSize = new System.Drawing.Size(554, 919);
+            this.ClientSize = new System.Drawing.Size(1665, 978);
+            this.Controls.Add(this.webView);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.progressBar1);
@@ -152,19 +154,17 @@ namespace KudoBot
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.webView);
             this.Name = "Form1";
             this.Text = "Kudo Bot";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.webView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private Microsoft.Web.WebView2.WinForms.WebView2 webView;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
@@ -174,6 +174,7 @@ namespace KudoBot
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView;
     }
 }
 
